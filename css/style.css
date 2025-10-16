@@ -1,0 +1,9 @@
+@import url('navbar.css');
+
+:root {
+    --primary-transparent: #FFD17D99;
+    --primary: #FFD17D;
+    --secondary-transparent: #EB609399;
+    --secondary: #EB6093;
+
+}
