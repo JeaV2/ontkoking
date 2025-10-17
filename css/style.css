@@ -1,9 +1,9 @@
 @import url('navbar.css');
 
 :root {
-    --primary-transparent: #FFD17D99;
+    --primary-transparent: rgba(255, 209, 125, 0.8);
     --primary: #FFD17D;
-    --secondary-transparent: #EB609399;
+    --secondary-transparent: rgba(235, 96, 147, 0.8);
     --secondary: #EB6093;
 
 }
@@ -20,10 +20,19 @@ body {
     padding: 0 !important;
 }
 
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .content {
     margin-top: 1em;
-    padding: 2em;
     background-color: var(--primary-transparent);
     border-radius: 1em;
     border: 2px solid #fff;
+    overflow: auto;
+}
+.content p {
+    padding: 1em;
+    font-size: 1.2em;
 }
