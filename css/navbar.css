@@ -1,5 +1,16 @@
 @import url('style.css');
+
 .navbar {
     background-color: var(--secondary-transparent) !important;
-    border: 0 5px 5px 5px solid var(--secondary) !important;
+    border-bottom: 2px solid var(--secondary) !important;
+    border-radius: 0 0 1em 1em !important;
+
+}
+.nav-link {
+    background-color: var(--secondary) !important;
+    font-weight: bold !important;
+    color: var(--primary) !important;
+    border: 2px solid white !important;
+    border-radius: 1em !important;
+    margin: 0 0.5em 0 0.5em !important;
 }

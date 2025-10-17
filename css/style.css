@@ -7,3 +7,23 @@
     --secondary: #EB6093;
 
 }
+
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.no-margin {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.content {
+    margin-top: 1em;
+    padding: 2em;
+    background-color: var(--primary-transparent);
+    border-radius: 1em;
+    border: 2px solid #fff;
+}
