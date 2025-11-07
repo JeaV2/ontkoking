@@ -60,8 +60,8 @@
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Wachtwoord</label>
-                  <?php if (!empty($error['username'])): ?>
-                      <div class="alert alert-danger"><?= $error['username'] ?></div>
+                  <?php if (!empty($error['password'])): ?>
+                      <div class="alert alert-danger"><?= $error['password'] ?></div>
                   <?php endif; ?>
                 <input type="password" class="form-control" id="password" name="password">
               </div>
