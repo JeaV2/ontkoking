@@ -19,6 +19,7 @@ if ($validRefer || $_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = $stmt->fetch();
             if ($user) {
                 session_start();
+                $_SESSION['id'] = $user['GebruikerID'];
                 $_SESSION['username'] = $user['Naam'];
                 $_SESSION['role'] = $user['Rol'];
                 header('Location: ../');
