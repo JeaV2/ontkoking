@@ -3,7 +3,8 @@ $validRefer = isset($_SERVER['HTTP_REFERER']) && str_contains($_SERVER['HTTP_REF
 if ($validRefer || $_SERVER['REQUEST_METHOD'] === 'POST') {
     $loginUsername = trim(strip_tags($_POST['username']));
     $loginPassword = trim(strip_tags($_POST['password']));
-    $password_confirm = trim(strip_tags($_POST['password_confirm']));
+    $passwordConfirm = trim(strip_tags($_POST['password_confirm']));
+    $passwordRegex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{10,}$/';
 
 
     if (empty($loginUsername)) {
@@ -12,8 +13,11 @@ if ($validRefer || $_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($loginPassword)) {
         $error['password'] = 'Een wachtwoord is verplicht';
     }
-    if ($loginPassword !== $password_confirm) {
+    if ($loginPassword !== $passwordConfirm) {
         $error['password'] = 'Wachtwoorden komen niet overeen';
+    }
+    if (!preg_match($passwordRegex, $loginPassword)) {
+        $error['password'] = 'Wachtwoord moet minimaal 10 tekens bevatten, waaronder een hoofdletter, een kleine letter, een cijfer en een speciaal teken.';
     }
     if (empty($error)) {
         $loginPassword = (sha1($loginPassword));
