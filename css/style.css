@@ -5,6 +5,10 @@
     --primary: #FFD17D;
     --secondary-transparent: rgba(235, 96, 147, 0.8);
     --secondary: #EB6093;
+    --primary-dark: #FFBC42;
+    --primary-dark-transparent: #ffbc42cc;
+    --secondary-dark-transparent: #d81159cc;
+    --secondary-dark: #D81159;
 
 }
 
@@ -27,12 +31,10 @@ body {
 
 .content {
     margin-top: 1em;
-    background-color: var(--primary-transparent);
+    padding: 1em;
+    background-color: var(--primary-dark-transparent);
     border-radius: 1em;
     border: 2px solid #fff;
     overflow: auto;
-}
-.content p {
-    padding: 1em;
     font-size: 1.2em;
 }
