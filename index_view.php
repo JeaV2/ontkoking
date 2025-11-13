@@ -27,9 +27,18 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Recepten</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Inloggen</a>
-          </li>
+          <?php if(isset($_SESSION['id']) || isset($_SESSION['username'])|| isset($_SESSION['role'])): ?>
+            <li class="nav-item">
+              <a class="nav-link" href="./loguit/">Uitloggen</a>
+            </li>
+          <?php else: ?>
+            <li class="nav-item">
+              <a class="nav-link" href="./login/">Inloggen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./aanmelden/">Aanmelden</a>
+            </li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>
@@ -47,10 +56,10 @@
 
             <!-- numbered leaderboard -->
             <ol id="leaderboard" class="list-group list-group-numbered">
-              <?php foreach($topGebruikers as $gebruiker): ?>
+              <?php foreach($topUsers as $user): ?>
                 <li class="list-group-item d-flex justify-content-between align-items-start">
-                  <div class="ms-2 me-auto"><?= $gebruiker['Naam']; ?></div>
-                  <span class="badge bg-primary rounded-pill"><?= $gebruiker['Score']; ?></span>
+                  <div class="ms-2 me-auto"><?= $user['Naam']; ?></div>
+                  <span class="badge bg-primary rounded-pill"><?= $user['Score']; ?></span>
                 </li>
               <?php endforeach; ?>
             </ol>
