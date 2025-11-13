@@ -39,35 +39,24 @@
       <div class="col-md-2 d-flex">
         <div class="content flex-fill">
             <h1>Leaderboard</h1>
+            <?php if (isset($error['database'])): ?>
+              <div class="alert alert-danger" role="alert">
+                <?= htmlspecialchars($error['database']); ?>
+              </div>
+            <?php endif; ?>
 
             <!-- numbered leaderboard -->
             <ol id="leaderboard" class="list-group list-group-numbered">
-              <!-- items will be inserted by JS -->
+              <?php foreach($topGebruikers as $gebruiker): ?>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                  <div class="ms-2 me-auto"><?= $gebruiker['Naam']; ?></div>
+                  <span class="badge bg-primary rounded-pill"><?= $gebruiker['Score']; ?></span>
+                </li>
+              <?php endforeach; ?>
             </ol>
 
         </div>
       </div>
-
-  <script>
-    // sample data; replace with your real data or fetch from API
-    const players = [
-      { name: 'Alice', points: 120 },
-      { name: 'Bob', points: 95 },
-      { name: 'Carol', points: 80 },
-      {name: 'David', points: 75 }
-    ];
-
-    const list = document.getElementById('leaderboard');
-    players.forEach(player => {
-      const li = document.createElement('li');
-      li.className = 'list-group-item d-flex justify-content-between align-items-start';
-      li.innerHTML = `
-        <div class="ms-2 me-auto">${player.name}</div>
-        <span class="badge bg-primary rounded-pill">${player.points}</span>
-      `;
-      list.appendChild(li);
-    });
-  </script>
 
         <div class="col-md-10 d-flex">
         <div class="content flex-fill">
