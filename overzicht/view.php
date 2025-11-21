@@ -51,8 +51,12 @@
                 <div class="card-body">
                   <h5 class="card-title"><?= $recept['ReceptNaam']; ?></h5>
                   <p class="card-text">Categorie: <?= $recept['Categorie']; ?></p>
-                  <p class="card-text"><small class="text-muted">Toegevoegd door: <?= $recept['Naam']; ?></small></p>
-                  <a href="../recept?id=<?= $recept['ReceptID']; ?>" class="btn btn-primary">Bekijk recept!</a>
+                  <p class="card-text">
+                    <?= $recept['ReceptInfo']; ?>
+                    <br>
+                    <small class="text-muted">Toegevoegd door: <?= $recept['Naam']; ?></small>
+                  </p>
+                  <a href="../recept/?id=<?= $recept['ReceptID']; ?>" class="btn btn-primary">Bekijk recept!</a>
                 </div>
               </div>
             <?php endforeach; ?>
