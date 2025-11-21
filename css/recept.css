@@ -1,0 +1,30 @@
+.img-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+img {
+    border: 2px solid #fff;
+    border-radius: 1em;
+    height: 500px;
+    width: 800px;
+    object-fit: cover;
+}
+
+.recept-naam {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2em;
+    color: #fff;
+    margin: 0;
+    padding: 0.2em 0.5em;
+    background-color: var(--secondary-dark-transparent);
+    border-radius: 0.5em;
+}
+
+.recept-beschrijving {
+    margin: 1em 5em;
+    padding: 1em;
+}
