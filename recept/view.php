@@ -57,8 +57,8 @@
                 <?php if (!empty($ingredient['Aantal'])): ?>
                   <?= $ingredient['Aantal'] ?>
                 <?php endif; ?>
-                <?php if (!empty($ingredient['Groote'])): ?>
-                  <?= $ingredient['Groote'] ?>
+                <?php if (!empty($ingredient['Grootte'])): ?>
+                  <?= $ingredient['Grootte'] ?>
                 <?php endif; ?>
                 <?= $ingredient['Ingredient'] ?>
               </li>
