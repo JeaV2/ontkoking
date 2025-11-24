@@ -1,0 +1,8 @@
+.form-container {
+    margin: 1em 5em;
+    padding: 20px;
+}
+
+input, select {
+    margin-bottom: 1em;
+}
