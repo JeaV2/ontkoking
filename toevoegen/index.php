@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors['database'] = "Fout bij het toevoegen van het recept: " . $e->getMessage();
         }
         finally {
-            header("Location: ../?info=". urlencode("Recept succesvol toegevoegd."));
+            header("Location: ../overzicht/?info=". urlencode("Recept succesvol toegevoegd."));
             exit;
         }
     }

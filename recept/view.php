@@ -85,6 +85,9 @@
           <p>
             Geplaatst door: <?= htmlspecialchars($recept['Naam']) ?>
             <br>
+            <?php if (isset($_SESSION['id']) && $_SESSION['id'] == $recept['GebruikerID']): ?>
+              <a href="../bewerken/?id=<?= $recept['ReceptID'] ?>" class="btn btn-warning">Recept Bewerken</a>
+            <?php endif; ?>
             <!-- Heb jij dit recept gekookt?
             <button class="btn btn-success" onclick="">Ja!</button> -->
           </p>

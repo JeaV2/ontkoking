@@ -1,4 +1,8 @@
 <?php 
+
+$info = $_GET['info'] ?? null;
+$error = $_GET['error'] ?? null;
+
 session_start();
 require_once '../config.php';
 

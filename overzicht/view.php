@@ -30,7 +30,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="./">Recepten</a>
           </li>
-          <?php if(isset($_SESSION['id'])): ?>
+          <?php if (isset($_SESSION['id'])): ?>
             <li class="nav-item">
               <a class="nav-link" href="../toevoegen/">Recept Toevoegen</a>
             </li>
@@ -51,6 +51,26 @@
   </nav>
   <!--! Change the amount of rows and columns as needed for the page layout! -->
   <div class="container-fluid no-margin">
+    <div class="row justify-content-center">
+      <div class="col-md-4 mt-3">
+        <?php
+        switch (true) {
+          case !empty($info): ?>
+            <div class="alert alert-success text-center" role="alert">
+              <?= htmlspecialchars($info); ?>
+            </div>
+            <?php
+            break;
+          case !empty($error): ?>
+            <div class="alert alert-danger text-center" role="alert">
+              <?= htmlspecialchars($error); ?>
+            </div>
+            <?php
+            break;
+        }
+        ?>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12">
         <div class="content">
@@ -59,7 +79,7 @@
           <div class="d-flex flex-wrap justify-content-center gap-4">
             <?php foreach ($recepten as $recept): ?>
               <div class="card">
-                <img src="<?= $recept['Plaatje']; ?>" class="card-img-top" alt="<?= $recept['ReceptNaam']; ?>" >
+                <img src="<?= $recept['Plaatje']; ?>" class="card-img-top" alt="<?= $recept['ReceptNaam']; ?>">
                 <div class="card-body">
                   <h5 class="card-title"><?= $recept['ReceptNaam']; ?></h5>
                   <p class="card-text">Categorie: <?= $recept['Categorie']; ?></p>
