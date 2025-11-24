@@ -53,6 +53,9 @@
             <div class="col-md-12">
                 <div class="content">
                     <div class="alert alert-light form-container">
+                        <?php if (!empty($errors['database'])): ?>
+                            <div class="badge text-bg-danger mb-3"><?= htmlspecialchars($errors['database']) ?></div>
+                        <?php endif; ?>
                         <h1>Voeg jouw eigen recept toe!</h1>
                         <form action="./" method="post">
                             <label for="receptNaam">Geef je recept een naam:</label>

@@ -84,8 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         catch (PDOException $e) {
-            header("Location: ../?error=". urlencode($e->getMessage()));
-            exit;
+            $errors['database'] = "Fout bij het toevoegen van het recept: " . $e->getMessage();
         }
         finally {
             header("Location: ../?info=". urlencode("Recept succesvol toegevoegd."));
