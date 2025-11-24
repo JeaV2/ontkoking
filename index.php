@@ -1,5 +1,7 @@
 <?php
 
+$info = $_GET['info'] ?? null;
+
 require_once 'config.php';
 session_start();
 try {
