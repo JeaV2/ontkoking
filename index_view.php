@@ -22,14 +22,17 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="./">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./overzicht/">Recepten</a>
           </li>
-          <?php if(isset($_SESSION['id']) || isset($_SESSION['username'])|| isset($_SESSION['role'])): ?>
+          <?php if(isset($_SESSION['id'])): ?>
             <li class="nav-item">
-              <a class="nav-link" href="./loguit/">Uitloggen</a>
+              <a class="nav-link" href="./toevoegen/">Recept Toevoegen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./login/logout.php">Uitloggen</a>
             </li>
           <?php else: ?>
             <li class="nav-item">

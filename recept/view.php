@@ -25,14 +25,26 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="../">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Recepten</a>
+            <a class="nav-link active" aria-current="page" href="../overzicht/">Recepten</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Inloggen</a>
-          </li>
+          <?php if(isset($_SESSION['id'])): ?>
+            <li class="nav-item">
+              <a class="nav-link" href="../toevoegen/">Recept Toevoegen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../login/logout.php">Uitloggen</a>
+            </li>
+          <?php else: ?>
+            <li class="nav-item">
+              <a class="nav-link" href="../login/">Inloggen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../aanmelden/">Aanmelden</a>
+            </li>
+          <?php endif; ?>
         </ul>
       </div>
     </div>

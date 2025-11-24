@@ -25,13 +25,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="../">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Recepten</a>
+            <a class="nav-link" href="../overzicht/">Recepten</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inloggen</a>
+            <a class="nav-link" href="../login/">Inloggen</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="./">Aanmelden</a>
           </li>
         </ul>
       </div>
