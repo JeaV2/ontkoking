@@ -62,7 +62,7 @@
                             <br>
                             <?php if (!empty($errors['receptNaam'])): ?>
                                 <div class="badge text-bg-danger"><?= htmlspecialchars($errors['receptNaam']) ?></div>
-<br>
+                                <br>
                             <?php endif; ?>
                             <input type="text" id="receptNaam" name="receptNaam"
                                 value="<?= htmlspecialchars($receptNaam ?? ''); ?>">
@@ -76,7 +76,7 @@
                             <br>
                             <?php if (!empty($errors['plaatje'])): ?>
                                 <div class="badge text-bg-danger"><?= htmlspecialchars($errors['plaatje']) ?></div>
-<br>
+                                <br>
                             <?php endif; ?>
                             <input type="text" id="plaatje" name="plaatje"
                                 value="<?= htmlspecialchars($plaatje ?? ''); ?>">
@@ -87,7 +87,7 @@
                             <br>
                             <?php if (!empty($errors['receptInfo'])): ?>
                                 <div class="badge text-bg-danger"><?= htmlspecialchars($errors['receptInfo']) ?></div>
-<br>
+                            <br>
                             <?php endif; ?>
                             <input type="text" id="receptInfo" name="receptInfo"
                                 value="<?= htmlspecialchars($receptInfo ?? ''); ?>"
@@ -97,6 +97,9 @@
                             <span id="ingredienten">
                                 <label>Voeg ingredienten toe:</label>
                                 <br>
+                                <?php if (!empty($errors['hoeveelheid'])): ?>
+                                    <div class="badge text-bg-danger"><?= htmlspecialchars($errors['hoeveelheid']) ?></div>
+                                <?php endif; ?>
                                 <?php if (!empty($errors['ingredientNaam'])): ?>
                                     <div class="badge text-bg-danger"><?= htmlspecialchars($errors['ingredientNaam']) ?></div>
                                 <?php endif; ?>
@@ -118,7 +121,7 @@
                                                 <option value="">Geen Grootte</option>
                                                 <?php foreach (getSizes() as $size): ?>
                                                     <option value="<?= htmlspecialchars($size) ?>" 
-                                                        <?= (isset($ing['grootte']) && $ing['grootte'] === $size) ? 'selected' : '' ?>>
+                                                        <?= (isset($ing['grootte']) && $ing['grootte'] === $size) ? 'selected' : '' ?>
                                                         <?= htmlspecialchars($size) ?>
                                                     </option>
                                                 <?php endforeach; ?>
@@ -161,7 +164,7 @@
                             <br>
                             <?php if (!empty($errors['receptInstructies'])): ?>
                                 <div class="badge text-bg-danger"><?= htmlspecialchars($errors['receptInstructies']) ?></div>
-<br>
+                            <br>
                             <?php endif; ?>
                             <textarea id="receptInstructies" name="receptInstructies" rows="6" cols="50"
                                 placeholder="Stap 1: Doe dit. &#10;Stap 2: Doe dat."><?= htmlspecialchars($receptInstructies ?? '') ?></textarea>
@@ -171,7 +174,7 @@
                             <br>
                             <?php if (!empty($errors['categorie'])): ?>
                                 <div class="badge text-bg-danger"><?= htmlspecialchars($errors['categorie']) ?></div>
-<br>
+                                <br>
                             <?php endif; ?>
                             <select name="categorie" id="categorie">
                                 <?php foreach (getCategories() as $category): ?>

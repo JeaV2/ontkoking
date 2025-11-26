@@ -92,6 +92,9 @@
                             <span id="ingredienten">
                                 <label>Voeg ingredienten toe:</label>
                                 <br>
+                                <?php if (!empty($errors['hoeveelheid'])): ?>
+                                    <div class="badge text-bg-danger"><?= htmlspecialchars($errors['hoeveelheid']) ?></div>
+                                <?php endif; ?>
                                 <?php if (!empty($errors['ingredientNaam'])): ?>
                                     <div class="badge text-bg-danger"><?= htmlspecialchars($errors['ingredientNaam']) ?></div>
                                 <?php endif; ?>

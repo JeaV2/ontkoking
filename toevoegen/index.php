@@ -20,6 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($ingredientNaam)) {
             $errors['ingredientNaam'] = "Ingredient naam is verplicht.";
         }
+        if ($hoeveelheid < 0) {
+            $errors['hoeveelheid'] = "Hoeveelheid mag niet negatief zijn.";
+        }
 
         if (!empty($grootte) && !in_array($grootte, getSizes(), true)) {
             $errors['grootte'] = "Ongeldige grootte geselecteerd.";
