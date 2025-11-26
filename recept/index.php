@@ -40,4 +40,17 @@ catch (Exception $e) {
     exit;
 }
 
+try {
+    $query = "SELECT * FROM GekooktGebruiker WHERE ReceptID = :recept_id AND GebruikerID = :gebruiker_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute(['recept_id' => $recept_id, 'gebruiker_id' => $_SESSION['id'] ?? 0]);
+    $isGekookt = $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+}
+catch (Exception $e) {
+    $error = "Er is een fout opgetreden bij het controleren of het recept is gekookt. {$e->getMessage()}";
+    header('Location: ../overzicht/?error=' . urlencode($error));
+    exit;
+}
+
+
 include 'view.php';

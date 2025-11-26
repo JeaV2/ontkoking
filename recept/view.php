@@ -12,6 +12,7 @@
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/recept.css">
+  <script src="../js/recept.js" defer></script>
 </head>
 
 <body>
@@ -30,7 +31,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../overzicht/">Recepten</a>
           </li>
-          <?php if(isset($_SESSION['id'])): ?>
+          <?php if (isset($_SESSION['id'])): ?>
             <li class="nav-item">
               <a class="nav-link" href="../toevoegen/">Recept Toevoegen</a>
             </li>
@@ -84,12 +85,20 @@
           <h2>Einde!</h2>
           <p>
             Geplaatst door: <?= htmlspecialchars($recept['Naam']) ?>
-            <br>
+          </p>
+          <p>
             <?php if (isset($_SESSION['id']) && ($_SESSION['id'] == $recept['GebruikerID'] || (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'))): ?>
+            <p>
               <a href="../bewerken/?id=<?= $recept['ReceptID'] ?>" class="btn btn-warning">Recept Bewerken</a>
+            </p>
+          <?php endif; ?>
+          <p id="gekookt">
+            <?php if (!$isGekookt && isset($_SESSION['id']) && isset($_SESSION['username'])): ?>
+              Heb jij dit recept gekookt?
+              <button class="btn btn-success" onclick="addscore(<?= $recept['ReceptID'] ?>)">Ja!</button>
+            <?php elseif ($isGekookt): ?>
+              <span class="badge bg-success">Je hebt dit recept al gekookt!</span>
             <?php endif; ?>
-            <!-- Heb jij dit recept gekookt?
-            <button class="btn btn-success" onclick="">Ja!</button> -->
           </p>
         </div>
       </div>
