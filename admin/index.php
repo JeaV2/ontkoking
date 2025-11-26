@@ -15,6 +15,24 @@ function buildPlaceholders(int $count): string {
     return implode(',', array_fill(0, $count, '?'));
 }
 
+function deleteRecipeCascade(PDO $pdo, int $recipeId): void {
+    $stmt = $pdo->prepare('SELECT IngredientID FROM IngredientReceptKoppel WHERE ReceptID = :id');
+    $stmt->execute([':id' => $recipeId]);
+    $ingredientIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    $stmt = $pdo->prepare('DELETE FROM IngredientReceptKoppel WHERE ReceptID = :id');
+    $stmt->execute([':id' => $recipeId]);
+
+    if (!empty($ingredientIds)) {
+        $placeholders = buildPlaceholders(count($ingredientIds));
+        $stmt = $pdo->prepare("DELETE FROM Ingredient WHERE IngredientID IN ($placeholders)");
+        $stmt->execute($ingredientIds);
+    }
+
+    $stmt = $pdo->prepare('DELETE FROM Recept WHERE ReceptID = :id');
+    $stmt->execute([':id' => $recipeId]);
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? null;
 
@@ -62,23 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $recipeIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
                 if (!empty($recipeIds)) {
-                    $recipePlaceholders = buildPlaceholders(count($recipeIds));
-
-                    $stmt = $pdo->prepare("SELECT IngredientID FROM IngredientReceptKoppel WHERE ReceptID IN ($recipePlaceholders)");
-                    $stmt->execute($recipeIds);
-                    $ingredientIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-                    $stmt = $pdo->prepare("DELETE FROM IngredientReceptKoppel WHERE ReceptID IN ($recipePlaceholders)");
-                    $stmt->execute($recipeIds);
-
-                    if (!empty($ingredientIds)) {
-                        $ingredientPlaceholders = buildPlaceholders(count($ingredientIds));
-                        $stmt = $pdo->prepare("DELETE FROM Ingredient WHERE IngredientID IN ($ingredientPlaceholders)");
-                        $stmt->execute($ingredientIds);
+                    foreach ($recipeIds as $recipeId) {
+                        deleteRecipeCascade($pdo, (int)$recipeId);
                     }
-
-                    $stmt = $pdo->prepare("DELETE FROM Recept WHERE ReceptID IN ($recipePlaceholders)");
-                    $stmt->execute($recipeIds);
                 }
 
                 $stmt = $pdo->prepare('DELETE FROM Gebruiker WHERE GebruikerID = :id');
@@ -89,6 +93,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } catch (PDOException $e) {
                 $pdo->rollBack();
                 $status['error'] = 'Verwijderen mislukt: ' . $e->getMessage();
+            }
+        }
+    } elseif ($action === 'delete_recipe') {
+        $recipeId = (int)($_POST['recept_id'] ?? 0);
+
+        if ($recipeId <= 0) {
+            $status['error'] = 'Ongeldig recept geselecteerd.';
+        } else {
+            try {
+                $pdo->beginTransaction();
+                deleteRecipeCascade($pdo, $recipeId);
+                $pdo->commit();
+                $status['success'] = 'Recept en ingrediënten verwijderd.';
+            } catch (PDOException $e) {
+                $pdo->rollBack();
+                $status['error'] = 'Recept verwijderen mislukt: ' . $e->getMessage();
             }
         }
     }

@@ -103,12 +103,17 @@
                   <?php if ($userRecipes): ?>
                     <ul class="list-group">
                       <?php foreach ($userRecipes as $recipe): ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap gap-2">
                           <span><?= htmlspecialchars($recipe['ReceptNaam']) ?></span>
-                          <span class="btn-group btn-group-sm">
-                            <a href="../recept/?id=<?= (int)$recipe['ReceptID'] ?>" class="btn btn-outline-primary">Bekijken</a>
-                            <a href="../bewerken/?id=<?= (int)$recipe['ReceptID'] ?>" class="btn btn-outline-warning">Bewerken</a>
-                          </span>
+                          <div class="d-flex align-items-center gap-2">
+                            <a href="../recept/?id=<?= (int)$recipe['ReceptID'] ?>" class="btn btn-outline-primary btn-sm">Bekijken</a>
+                            <a href="../bewerken/?id=<?= (int)$recipe['ReceptID'] ?>" class="btn btn-outline-warning btn-sm">Bewerken</a>
+                            <form method="post" class="m-0" onsubmit="return confirm('Weet je zeker dat je dit recept wilt verwijderen?');">
+                              <input type="hidden" name="action" value="delete_recipe">
+                              <input type="hidden" name="recept_id" value="<?= (int)$recipe['ReceptID'] ?>">
+                              <button type="submit" class="btn btn-outline-danger btn-sm">Verwijderen</button>
+                            </form>
+                          </div>
                         </li>
                       <?php endforeach; ?>
                     </ul>
