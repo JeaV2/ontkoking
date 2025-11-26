@@ -77,7 +77,15 @@
 
         <div class="col-md-10 d-flex">
         <div class="content flex-fill">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque non a incidunt veniam ex temporibus tempora magni. Ullam veritatis voluptates itaque, magni aut aperiam molestiae debitis error, molestias, corrupti nam!</p>
+          <h1>Wie zijn wij en wat is het doel van deze website?</h1>
+          <p>Wij zijn een klein team dat de jonge generatie Z wil helpen om thuis snel en lekker te koken met ingrediënten die je thuis kunt vinden.
+             Hier kun je ook je eigen recept invoeren en jezelf op het Leaderboard zien staan met meer punten.</p>
+             <br>
+          <h2>Hoe werkt het?</h2>
+          <p>Je kunt recepten toevoegen door op de knop "Recept Toevoegen"
+            Om recepten in het systeem in te voeren, moet u eerst inloggen. Daarna kunt u zichzelf ook terugvinden op het Leaderboard.</p>
+            <br>
+            <h1>Log in, voer je eigen recept in, kook eten en sta bovenaan het Leaderboard!</h1>
         </div>
       </div>
 </body>
