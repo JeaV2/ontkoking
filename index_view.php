@@ -31,6 +31,11 @@
             <li class="nav-item">
               <a class="nav-link" href="./toevoegen/">Recept Toevoegen</a>
             </li>
+            <?php if(isset($_SESSION['role']) && $_SESSION['role'] === 'Admin'): ?>
+              <li class="nav-item">
+                <a class="nav-link" href="./admin/">Admin</a>
+              </li>
+            <?php endif; ?>
             <li class="nav-item">
               <a class="nav-link" href="./login/logout.php">Uitloggen</a>
             </li>

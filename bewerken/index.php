@@ -27,7 +27,8 @@ try {
         exit;
     }
 
-    if ($recept['GebruikerID'] != $_SESSION['id']) {
+    $isAdmin = isset($_SESSION['role']) && $_SESSION['role'] === 'Admin';
+    if ($recept['GebruikerID'] != $_SESSION['id'] && !$isAdmin) {
         header('Location: ../overzicht/?error=' . urlencode('Je hebt geen toestemming om dit recept te bewerken.'));
         exit;
     }
